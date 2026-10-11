@@ -1,6 +1,6 @@
 {
   "name": "searchdock",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Google Search Console CLI, read-only MCP tools and SEO reporting skills.",
   "author": { "name": "Xplormity Collective" },
   "homepage": "https://github.com/xplormityai/searchdock-cli",

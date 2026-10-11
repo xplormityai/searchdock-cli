@@ -1,4 +1,4 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
-  "mcpServers": { "searchdock": { "type": "stdio", "command": "npx", "args": ["--yes", "searchdock-cli@0.1.0", "mcp"] } }
+  "mcpServers": { "searchdock": { "type": "stdio", "command": "npx", "args": ["--yes", "searchdock-cli@0.1.1", "mcp"] } }
 }

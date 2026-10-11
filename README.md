@@ -8,22 +8,24 @@ SearchDock is open source, runs locally, and requests read-only Google access. U
 
 Node.js **22 or later** is required for every distribution.
 
+Packages: [npm](https://www.npmjs.com/package/searchdock-cli) · [PyPI](https://pypi.org/project/searchdock-cli/).
+
 ```sh
-# npm: after the first npm release
+# npm
 npm install --global searchdock-cli
 searchdock --help
 
-# No global installation: after the first npm release
-npx --yes searchdock-cli@0.1.0 --help
+# No global installation
+npx --yes searchdock-cli@0.1.1 --help
 
-# Python: after the first PyPI release; Node.js is still required
+# Python; Node.js is still required
 pipx install searchdock-cli
 # Alternatively: python -m pip install searchdock-cli
 ```
 
 The Python package is a launcher containing the exact same JavaScript runtime. It has no separate Google implementation. If you install both packages, use `python -m searchdock_cli` to select the Python launcher explicitly.
 
-Before packages are published, run from source:
+To run from source:
 
 ```sh
 git clone https://github.com/xplormityai/searchdock-cli.git
@@ -83,22 +85,22 @@ Report windows default to 28 days ending three days before today in **Pacific Ti
 
 SearchDock provides five read-only MCP tools: `searchdock_sites`, `searchdock_analytics`, `searchdock_sitemaps`, `searchdock_inspect`, and `searchdock_report`. Authenticate locally first; MCP tools do not start consent or change account settings.
 
-After the npm release, add this stdio server to any compatible MCP client:
+Add this stdio server to any compatible MCP client:
 
 ```json
 {
   "mcpServers": {
     "searchdock": {
       "command": "npx",
-      "args": ["--yes", "searchdock-cli@0.1.0", "mcp"]
+      "args": ["--yes", "searchdock-cli@0.1.1", "mcp"]
     }
   }
 }
 ```
 
-For a source checkout, set `command` to `node` and `args` to `["/absolute/path/searchdock-cli/dist/cli.cjs", "mcp"]`. Windows clients that launch `npx.cmd` through a shell may need `command: "cmd"` and `args: ["/c", "npx", "--yes", "searchdock-cli@0.1.0", "mcp"]`. Use your client's Windows configuration guidance.
+For a source checkout, set `command` to `node` and `args` to `["/absolute/path/searchdock-cli/dist/cli.cjs", "mcp"]`. Windows clients that launch `npx.cmd` through a shell may need `command: "cmd"` and `args: ["/c", "npx", "--yes", "searchdock-cli@0.1.1", "mcp"]`. Use your client's Windows configuration guidance.
 
-Plugins use the same pinned npm version. Install them **after the npm package is published**:
+Plugins use the same pinned npm version:
 
 ```sh
 # Codex CLI
@@ -156,7 +158,7 @@ npm test
 npm run check
 python -m pip install build twine
 npm run release:artifacts
-python -m twine check dist/releases/searchdock_cli-0.1.0-py3-none-any.whl dist/releases/searchdock_cli-0.1.0.tar.gz
+python -m twine check dist/releases/searchdock_cli-0.1.1-py3-none-any.whl dist/releases/searchdock_cli-0.1.1.tar.gz
 ```
 
 [Release instructions](docs/releasing.md) cover npm/PyPI accounts, OIDC trusted publishing, versioning and GitHub release artifacts. Package creation alone does not publish anything.

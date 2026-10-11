@@ -1,7 +1,7 @@
 {
   "name": "searchdock-cli",
   "mcpName": "io.github.xplormityai/searchdock-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Google Search Console CLI for analytics, URL inspection and sitemap monitoring, with agent skills and an MCP server.",
   "type": "module",
   "bin": {
