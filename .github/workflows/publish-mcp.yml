@@ -26,4 +26,19 @@ jobs:
       - name: Authenticate with GitHub OIDC
         run: ./mcp-publisher login github-oidc
       - name: Publish server metadata
-        run: ./mcp-publisher publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          NAME=$(node -p "require('./server.json').name")
+          VERSION=$(node -p "require('./server.json').version")
+          ENCODED_NAME=$(node -p "encodeURIComponent(require('./server.json').name)")
+          URL="https://registry.modelcontextprotocol.io/v0.1/servers/$ENCODED_NAME/versions/$VERSION"
+          STATUS=$(curl --silent --output existing.json --write-out '%{http_code}' "$URL")
+          if [ "$STATUS" = "200" ]; then
+            echo "MCP Registry already has $NAME $VERSION"
+          elif [ "$STATUS" = "404" ]; then
+            ./mcp-publisher publish
+          else
+            echo "Registry lookup failed: HTTP $STATUS"
+            exit 1
+          fi
