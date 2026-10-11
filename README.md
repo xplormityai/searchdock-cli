@@ -150,7 +150,7 @@ You can also install the skill with the [open skills installer](https://github.c
 npx --yes skills add xplormityai/searchdock-cli --skill searchdock-setup searchdock --agent codex --copy --yes
 ```
 
-[`server.json`](server.json) prepares a listing in the MCP Registry under `io.github.xplormityai/searchdock-cli`. Registry publication requires the npm package to be live and namespace authentication; the metadata file alone does not create a listing.
+SearchDock is published in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.xplormityai/searchdock-cli) under `io.github.xplormityai/searchdock-cli`. Release workflows update its metadata using GitHub OIDC.
 
 ## What the Google API can and cannot tell you
 

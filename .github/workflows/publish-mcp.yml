@@ -14,8 +14,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --location --retry 3 https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz --output publisher.tar.gz
-          tar xzf publisher.tar.gz mcp-publisher
+          BASE=https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1
+          curl --fail --location --retry 3 "$BASE/mcp-publisher_linux_amd64.tar.gz" --output mcp-publisher_linux_amd64.tar.gz
+          curl --fail --location --retry 3 "$BASE/registry_1.8.1_checksums.txt" --output checksums.txt
+          awk '$2 == "mcp-publisher_linux_amd64.tar.gz"' checksums.txt > publisher.sha256
+          test -s publisher.sha256
+          sha256sum --check publisher.sha256
+          tar xzf mcp-publisher_linux_amd64.tar.gz mcp-publisher
       - name: Validate metadata
         run: ./mcp-publisher validate
       - name: Authenticate with GitHub OIDC
