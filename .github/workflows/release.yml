@@ -56,7 +56,7 @@ jobs:
           VERSION="${GITHUB_REF_NAME#v}"
           STATUS=$(curl --silent --output /dev/null --write-out '%{http_code}' "https://registry.npmjs.org/searchdock-cli/$VERSION")
           if [ "$STATUS" = "404" ]; then
-            npm publish "packages/searchdock-cli-$VERSION.tgz" --access public --provenance
+            npm publish "./packages/searchdock-cli-$VERSION.tgz" --access public --provenance
           elif [ "$STATUS" != "200" ]; then
             echo "Registry check failed: HTTP $STATUS"
             exit 1

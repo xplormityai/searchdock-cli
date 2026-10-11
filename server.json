@@ -3,11 +3,11 @@
   "name": "io.github.xplormityai/searchdock-cli",
   "description": "Read-only Google Search Console analytics, URL inspection and sitemaps via SearchDock CLI.",
   "repository": { "url": "https://github.com/xplormityai/searchdock-cli", "source": "github" },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "packages": [{
     "registryType": "npm",
     "identifier": "searchdock-cli",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "transport": { "type": "stdio" },
     "packageArguments": [{ "type": "positional", "value": "mcp" }]
   }]

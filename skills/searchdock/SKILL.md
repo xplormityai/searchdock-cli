@@ -13,7 +13,7 @@ Use SearchDock's read-only Google tools. Prefer `searchdock_*` MCP tools when av
 
 Missing query rows do not prove zero demand. Query data omits anonymized searches and reports top rows; summing queries can differ from aggregate totals. Zero impressions makes average position meaningless. Brand analytics do not establish a current live rank. Do not promise ranking, indexing or SEO/AEO/GEO scores.
 
-Use `searchdock --help` for command details. If the CLI is unavailable, install the published `searchdock-cli` npm package or use `npx --yes searchdock-cli@0.1.1`. The Python distribution requires Node.js 22+. For a source checkout, run `npm ci` and `npm run build`, then `node dist/cli.cjs`.
+Use `searchdock --help` for command details. If the CLI is unavailable, install the published `searchdock-cli` npm package or use `npx --yes searchdock-cli@0.1.2`. The Python distribution requires Node.js 22+. For a source checkout, run `npm ci` and `npm run build`, then `node dist/cli.cjs`.
 
 Keep tokens, OAuth client JSON, private reports and sign-in URLs out of responses, Git and public artifacts. Save a private report only when requested, using `--output <new-path>`. Do not initiate login through an MCP tool; the user must complete browser consent locally.
 
