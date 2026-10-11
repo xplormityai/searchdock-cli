@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 
@@ -10,6 +10,7 @@ const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 execFileSync(npm, ['pack', '--pack-destination', 'dist/releases'], { stdio: 'inherit', shell: process.platform === 'win32' });
 execFileSync(process.env.PYTHON || 'python', ['-m', 'build', 'python', '--outdir', 'dist/releases'], { stdio: 'inherit' });
 execFileSync(process.env.PYTHON || 'python', ['scripts/bundles.py', pkg.version], { stdio: 'inherit' });
+await copyFile('server.json', 'dist/releases/server.json');
 const { readdir } = await import('node:fs/promises');
 const hashes = [];
 for (const file of (await readdir('dist/releases')).sort()) {

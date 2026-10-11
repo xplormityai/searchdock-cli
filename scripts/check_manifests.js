@@ -1,4 +1,5 @@
 import Ajv2020 from 'ajv/dist/2020.js';
+import Ajv from 'ajv';
 import { readFile } from 'node:fs/promises';
 
 // Optional online compatibility check against the portable plugin specifications.
@@ -11,3 +12,9 @@ for (const name of ['plugin', 'mcp']) {
   if (!validate(manifest)) throw new Error(JSON.stringify(validate.errors));
 }
 console.log('Portable plugin and MCP manifests match their official schemas.');
+const registry = JSON.parse(await readFile('server.json', 'utf8'));
+const response = await fetch(registry.$schema, { signal: AbortSignal.timeout(30_000) });
+if (!response.ok) throw new Error(`Could not fetch MCP Registry schema: ${response.status}`);
+const validate = new Ajv({ strict: false, validateFormats: false }).compile(await response.json());
+if (!validate(registry)) throw new Error(JSON.stringify(validate.errors));
+console.log('MCP Registry publication metadata matches the official schema.');

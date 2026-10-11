@@ -16,7 +16,7 @@ GitHub releases include an npm tarball, Python wheel/source distribution, plugin
 
 ## Version updates
 
-Change `package.json`, `src/cli.js`, `python/pyproject.toml`, all three plugin manifests and pinned versions in `mcp.json`, `.mcp.json`, README and skill install instructions together. `npm run build` generates the Python version module. `npm run check` validates core version consistency. Tag `v<version>` only after tests and package validation pass.
+Change `package.json`, `src/cli.js`, `python/pyproject.toml`, `server.json`, all three plugin manifests and pinned versions in `mcp.json`, `.mcp.json`, README and skill install instructions together. `npm run build` generates the Python version module. `npm run check` validates core version consistency. Tag `v<version>` only after tests and package validation pass.
 
 ## Discoverability
 
@@ -24,4 +24,8 @@ Use the repository description: **Google Search Console CLI for analytics, URL i
 
 Suggested GitHub topics: `google-search-console`, `gsc`, `seo`, `cli`, `mcp`, `agent-skills`, `search-analytics`, `sitemap`, `codex`, `claude-code`. Keep the descriptive README heading, registry metadata and documentation consistent. Add a Bing keyword/title only once the Bing adapter is released.
 
-The skill can be distributed directly from GitHub and submitted to compatible skill directories. A plugin ZIP can be shared with compatible clients. Hosted plugin stores and the MCP Registry have their own account ownership, verification and review requirements; these artifacts do not automatically publish listings there. No search ranking is guaranteed.
+The skill is discoverable directly from GitHub with `npx skills add xplormityai/searchdock-cli --list` and installable with `--skill searchdock`. A plugin ZIP can be shared with compatible clients. Hosted plugin stores have separate ownership and review requirements; these artifacts do not automatically publish listings there. No search ranking is guaranteed.
+
+## MCP Registry
+
+After npm publication, use the official [MCP Registry publisher](https://modelcontextprotocol.io/registry/quickstart) with the included `server.json`. Its name matches the package's `mcpName`. Authenticate with an identity authorized for `io.github.xplormityai/`, then run `mcp-publisher publish` from this repository. If this is an organization namespace, use the supported [GitHub Actions OIDC flow](https://modelcontextprotocol.io/registry/github-actions) or another ownership verification method. Publishing the npm package does not automatically create the MCP Registry listing.

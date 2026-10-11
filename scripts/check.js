@@ -4,6 +4,11 @@ import assert from 'node:assert/strict';
 
 const pkg = JSON.parse(await readFile('package.json', 'utf8'));
 assert.equal(pkg.version, VERSION);
+const registry = JSON.parse(await readFile('server.json', 'utf8'));
+assert.equal(registry.name, pkg.mcpName);
+assert.equal(registry.version, pkg.version);
+assert.equal(registry.packages[0].version, pkg.version);
+assert.equal(registry.packages[0].identifier, pkg.name);
 for (const path of ['plugin.json', '.codex-plugin/plugin.json', '.claude-plugin/plugin.json']) {
   const manifest = JSON.parse(await readFile(path, 'utf8'));
   assert.equal(manifest.version, pkg.version, `${path}: version mismatch`);

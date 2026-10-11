@@ -115,6 +115,14 @@ In Claude Code:
 
 For a standalone skill, copy [`skills/searchdock`](skills/searchdock) into your agent's skills directory. Codex uses `~/.agents/skills/`; Claude Code uses `~/.claude/skills/`. Install the CLI separately. The setup skill is included in the plugin. The repository includes portable Agent Plugins, Codex and Claude manifests; local stdio plugins are not automatically listed in hosted plugin directories.
 
+You can also install the skill with the [open skills installer](https://github.com/vercel-labs/skills):
+
+```sh
+npx skills add xplormityai/searchdock-cli --skill searchdock
+```
+
+[`server.json`](server.json) prepares a listing in the MCP Registry under `io.github.xplormityai/searchdock-cli`. Registry publication requires the npm package to be live and namespace authentication; the metadata file alone does not create a listing.
+
 ## What the Google API can and cannot tell you
 
 | Available | Requires Search Console UI or an export |
