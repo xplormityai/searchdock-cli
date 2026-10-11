@@ -9,10 +9,12 @@ The repository is `xplormityai/searchdock-cli`. The npm and PyPI distribution na
 3. Check the Python archives with `python -m twine check dist/releases/searchdock_cli-0.1.0-py3-none-any.whl dist/releases/searchdock_cli-0.1.0.tar.gz`.
 4. For npm's first release, sign in locally with `npm login`, then run `npm publish dist/releases/searchdock-cli-0.1.0.tgz --access public`. npm may require browser approval or a one-time code. Check package ownership before submitting.
 5. In PyPI, configure a pending trusted publisher for `searchdock-cli` with owner `xplormityai`, repository `searchdock-cli`, workflow `release.yml`, and environment `pypi`. This can create the package on its first workflow publication.
-6. Once the npm package exists, configure its trusted publisher for the same repo and workflow, environment `npm`, allowing direct `npm publish`. The workflow uses OIDC; persistent npm/PyPI upload tokens are not required.
+6. Once the npm package exists, enable account-level 2FA and configure its trusted publisher for the same repo and workflow, environment `npm`, allowing direct `npm publish`. Use the package settings page or `npm trust github searchdock-cli --file release.yml --repo xplormityai/searchdock-cli --environment npm --allow-publish --yes`. The workflow uses OIDC; persistent npm/PyPI upload tokens are not required.
 7. Push a matching `v0.1.0` tag when both registry publishers are configured. The workflow builds tested artifacts and publishes to npm and PyPI in separate jobs. A first npm version already uploaded manually is skipped if the registry returns that exact version.
 
 GitHub releases include an npm tarball, Python wheel/source distribution, plugin ZIP, skill ZIP and SHA256 checksums. Plugins and MCP clients resolve the pinned npm release, so publish npm before announcing plugin installation.
+
+The GitHub release is created only after both registry jobs succeed. Failed jobs can be rerun; uploading GitHub release files is idempotent. GitHub creates the `npm` and `pypi` environments when the workflow first references them if they do not already exist. The publisher environment names must match these job names exactly.
 
 ## Version updates
 

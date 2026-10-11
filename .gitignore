@@ -12,6 +12,9 @@ python/LICENSE
 .artifacts/
 .env
 .env.*
+.npmrc
+.pypirc
+.mcpregistry_*
 credentials*.json
 client_secret*.json
 oauth-client*.json
