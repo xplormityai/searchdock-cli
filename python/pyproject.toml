@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "searchdock-cli"
+version = "0.1.0"
+description = "Google Search Console CLI with agent skills and MCP support. Requires Node.js 22+."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Xplormity Collective", email = "xplormityai@gmail.com"}]
+keywords = ["google-search-console", "seo", "cli", "mcp", "search-analytics"]
+classifiers = ["Environment :: Console", "Programming Language :: Python :: 3", "Operating System :: OS Independent", "Topic :: Internet :: WWW/HTTP"]
+
+[project.urls]
+Homepage = "https://github.com/xplormityai/searchdock-cli"
+Documentation = "https://github.com/xplormityai/searchdock-cli#readme"
+Issues = "https://github.com/xplormityai/searchdock-cli/issues"
+Source = "https://github.com/xplormityai/searchdock-cli"
+
+[project.scripts]
+searchdock = "searchdock_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+searchdock_cli = ["_core/cli.cjs", "_core/THIRD_PARTY_NOTICES.md"]

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "searchdock",
+  "version": "0.1.0",
+  "description": "Read Google Search Console analytics, inspect indexed URLs and monitor sitemaps with SearchDock CLI.",
+  "author": { "name": "Xplormity Collective", "email": "xplormityai@gmail.com", "url": "https://xplormity.com" },
+  "homepage": "https://github.com/xplormityai/searchdock-cli",
+  "repository": "https://github.com/xplormityai/searchdock-cli",
+  "license": "MIT",
+  "keywords": ["seo", "google-search-console", "cli", "mcp"],
+  "extensions": { "com.openai": { "onboardingSkill": "./skills/searchdock-setup/SKILL.md" } }
+}

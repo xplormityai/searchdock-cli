@@ -1,0 +1,68 @@
+{
+  "name": "searchdock-cli",
+  "version": "0.1.0",
+  "description": "Google Search Console CLI for analytics, URL inspection and sitemap monitoring, with agent skills and an MCP server.",
+  "type": "module",
+  "bin": {
+    "searchdock": "dist/cli.cjs"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist/cli.cjs",
+    "dist/THIRD_PARTY_NOTICES.md",
+    "src",
+    "skills",
+    "plugin.json",
+    "mcp.json",
+    ".mcp.json",
+    ".codex-plugin/plugin.json",
+    ".claude-plugin/plugin.json",
+    "docs",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test",
+    "check": "node scripts/check.js",
+    "prepack": "npm run build && npm run check",
+    "release:artifacts": "node scripts/artifacts.js"
+  },
+  "author": "Xplormity Collective",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xplormityai/searchdock-cli.git"
+  },
+  "homepage": "https://github.com/xplormityai/searchdock-cli#readme",
+  "bugs": {
+    "url": "https://github.com/xplormityai/searchdock-cli/issues"
+  },
+  "keywords": [
+    "google-search-console",
+    "gsc",
+    "seo",
+    "search-analytics",
+    "url-inspection",
+    "sitemap",
+    "cli",
+    "mcp",
+    "agent-skills",
+    "codex",
+    "claude-code"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "ajv": "^8.20.0",
+    "esbuild": "^0.25.0",
+    "zod": "^3.25.0"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "searchdock",
+  "owner": { "name": "Xplormity Collective" },
+  "plugins": [{ "name": "searchdock", "source": "./", "description": "Read-only Google Search Console CLI and MCP tools." }]
+}
