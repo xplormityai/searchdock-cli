@@ -24,6 +24,6 @@ for (const file of ['mcp.json', '.mcp.json']) {
 for (const file of ['.agents/plugins/marketplace.json', '.claude-plugin/marketplace.json']) JSON.parse(await readFile(file, 'utf8'));
 for (const folder of await readdir('skills')) {
   const skill = await readFile(`skills/${folder}/SKILL.md`, 'utf8');
-  assert.match(skill, /^---\nname: [a-z0-9-]+\ndescription: .+\n---\n/);
+  assert.match(skill, /^---\r?\nname: [a-z0-9-]+\r?\ndescription: .+\r?\n---\r?\n/);
 }
 console.log('Package, Python, plugin and skill metadata are consistent.');

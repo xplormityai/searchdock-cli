@@ -34,7 +34,7 @@ npm install --global searchdock-cli
 searchdock --help
 
 # No global installation
-npx --yes searchdock-cli@0.1.2 --help
+npx --yes searchdock-cli@0.1.3 --help
 
 # Python; Node.js is still required
 pipx install searchdock-cli
@@ -118,13 +118,13 @@ Add this stdio server to any compatible MCP client:
   "mcpServers": {
     "searchdock": {
       "command": "npx",
-      "args": ["--yes", "searchdock-cli@0.1.2", "mcp"]
+      "args": ["--yes", "searchdock-cli@0.1.3", "mcp"]
     }
   }
 }
 ```
 
-For a source checkout, set `command` to `node` and `args` to `["/absolute/path/searchdock-cli/dist/cli.cjs", "mcp"]`. Windows clients that launch `npx.cmd` through a shell may need `command: "cmd"` and `args: ["/c", "npx", "--yes", "searchdock-cli@0.1.2", "mcp"]`. Use your client's Windows configuration guidance.
+For a source checkout, set `command` to `node` and `args` to `["/absolute/path/searchdock-cli/dist/cli.cjs", "mcp"]`. Windows clients that launch `npx.cmd` through a shell may need `command: "cmd"` and `args: ["/c", "npx", "--yes", "searchdock-cli@0.1.3", "mcp"]`. Use your client's Windows configuration guidance.
 
 Plugins use the same pinned npm version:
 
@@ -185,7 +185,7 @@ npm test
 npm run check
 python -m pip install build twine
 npm run release:artifacts
-python -m twine check dist/releases/searchdock_cli-0.1.2-py3-none-any.whl dist/releases/searchdock_cli-0.1.2.tar.gz
+python -m twine check dist/releases/searchdock_cli-0.1.3-py3-none-any.whl dist/releases/searchdock_cli-0.1.3.tar.gz
 ```
 
 [Release instructions](docs/releasing.md) cover npm/PyPI accounts, OIDC trusted publishing, versioning and GitHub release artifacts. Package creation alone does not publish anything.

@@ -6,7 +6,7 @@ import { context, selectedContext, selectSite } from './service.js';
 import { providers } from './providers/index.js';
 import { SearchDockError, publicError } from './errors.js';
 
-export const VERSION = '0.1.2';
+export const VERSION = '0.1.3';
 const help = `SearchDock CLI ${VERSION} — Google Search Console from your terminal
 
 Usage: searchdock <command> [options]

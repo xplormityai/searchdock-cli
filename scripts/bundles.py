@@ -13,7 +13,8 @@ with ZipFile(destination / f'searchdock-plugin-{version}.zip', 'w', ZIP_DEFLATED
     for file in files:
         bundle.write(root / file, file)
 with ZipFile(destination / f'searchdock-skill-{version}.zip', 'w', ZIP_DEFLATED) as bundle:
-    for path in (root / 'skills/searchdock').rglob('*'):
-        if path.is_file():
-            bundle.write(path, 'searchdock/' + str(path.relative_to(root / 'skills/searchdock')).replace('\\', '/'))
+    for skill in ('searchdock', 'searchdock-setup'):
+        for path in (root / 'skills' / skill).rglob('*'):
+            if path.is_file():
+                bundle.write(path, skill + '/' + str(path.relative_to(root / 'skills' / skill)).replace('\\', '/'))
 print('Built public plugin and standalone skill archives.')

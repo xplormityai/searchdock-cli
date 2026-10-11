@@ -3,7 +3,7 @@ name: searchdock-setup
 description: Set up SearchDock CLI and read-only Google Search Console authentication, choose an account profile and verified property, and check the connection. Use for first installation or reconnecting Google access.
 ---
 
-Check `node --version` (22 or later) and `searchdock --version`. Reuse a working installation. Otherwise run `npm install --global searchdock-cli`; a no-global alternative is `npx --yes searchdock-cli@0.1.2 <command>`. Python users can run `pipx install searchdock-cli`, but still need Node.js 22+ and Python 3.10+. For a checkout use `npm ci`, `npm run build` and `node dist/cli.cjs`. Verify with `--version` and `doctor --json` before starting Google login.
+Check `node --version` (22 or later) and `searchdock --version`. Reuse a working installation. Otherwise run `npm install --global searchdock-cli`; a no-global alternative is `npx --yes searchdock-cli@0.1.3 <command>`. Python users can run `pipx install searchdock-cli`, but still need Node.js 22+ and Python 3.10+. For a checkout use `npm ci`, `npm run build` and `node dist/cli.cjs`. Verify with `--version` and `doctor --json` before starting Google login.
 
 Install both standalone skills for the current agent, unless a plugin already supplies them:
 
@@ -13,7 +13,7 @@ npx --yes skills add xplormityai/searchdock-cli --skill searchdock-setup searchd
 
 Replace `codex` with the current agent's identifier. Default to project scope; use `--global` only when requested. Without the skills CLI, copy the two repository skill directories to the agent's supported skills location, checking existing destinations before replacing them.
 
-If MCP is supported, merge a server named `searchdock` with command `npx` and args `["--yes", "searchdock-cli@0.1.2", "mcp"]` into the client's configuration. Preserve existing servers and account settings. On Windows, follow the client's process-launch guidance or use an absolute `node` executable with the installed `cli.cjs` path. A plugin already declares this server. Confirm the five `searchdock_*` tools are listed; authentication is a separate verification.
+If MCP is supported, merge a server named `searchdock` with command `npx` and args `["--yes", "searchdock-cli@0.1.3", "mcp"]` into the client's configuration. Preserve existing servers and account settings. On Windows, follow the client's process-launch guidance or use an absolute `node` executable with the installed `cli.cjs` path. A plugin already declares this server. Confirm the five `searchdock_*` tools are listed; authentication is a separate verification.
 
 Check `searchdock auth status --profile <name> --json` before reconnecting. If Google is disconnected, tell the user to enable the Search Console API in their own Google Cloud project, configure the OAuth consent screen, add their account as a test user if the app is in testing, and create a Desktop app OAuth client. They must download the JSON locally. Ask only for its path, never its contents. The complete steps are at https://github.com/xplormityai/searchdock-cli/blob/main/docs/google-setup.md.
 

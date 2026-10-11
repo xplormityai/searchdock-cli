@@ -32,7 +32,7 @@ Claude Code:
 /plugin install searchdock@searchdock --scope project
 ```
 
-Run the setup skill after installation. Plugins use `searchdock-cli@0.1.2` and do not bundle credentials. Repository plugins are not automatically published in hosted directories. Formats: [portable plugins](https://developers.openai.com/plugins/build/plugins), [Claude Code plugins](https://code.claude.com/docs/en/plugins-reference).
+Run the setup skill after installation. Plugins use `searchdock-cli@0.1.3` and do not bundle credentials. Repository plugins are not automatically published in hosted directories. Formats: [portable plugins](https://developers.openai.com/plugins/build/plugins), [Claude Code plugins](https://code.claude.com/docs/en/plugins-reference).
 
 ## MCP without a plugin
 
@@ -43,7 +43,7 @@ Merge this server into the client's configuration, keeping existing servers:
   "mcpServers": {
     "searchdock": {
       "command": "npx",
-      "args": ["--yes", "searchdock-cli@0.1.2", "mcp"]
+      "args": ["--yes", "searchdock-cli@0.1.3", "mcp"]
     }
   }
 }
