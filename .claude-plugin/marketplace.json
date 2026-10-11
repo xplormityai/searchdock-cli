@@ -1,5 +1,6 @@
 {
   "name": "searchdock",
+  "description": "Read-only Search Console MCP tools with setup and reporting skills.",
   "owner": { "name": "Xplormity Collective" },
   "plugins": [{ "name": "searchdock", "source": "./", "description": "Read-only Google Search Console CLI and MCP tools." }]
 }

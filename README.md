@@ -4,7 +4,25 @@ Read Google Search Console analytics, inspect indexed URLs, and monitor sitemaps
 
 SearchDock is open source, runs locally, and requests read-only Google access. Use the same core through npm, Python, MCP, a Codex or Claude Code plugin, or a standalone agent skill. **Bing Webmaster Tools support is planned.**
 
-## Install
+## Set up with your agent
+
+Copy this prompt into your coding agent:
+
+```text
+Set up SearchDock CLI for this project using
+https://github.com/xplormityai/searchdock-cli. Read its README and
+skills/searchdock-setup/SKILL.md. Check Node.js 22+, reuse an existing
+installation, or install the CLI from npm. Install searchdock-setup and
+searchdock skills for the agent I am using, scoped to this project, and
+connect the stdio MCP server if this agent supports it. Keep existing
+agent configuration. For Google access, ask only for the local path to
+my Desktop OAuth client JSON and guide me through read-only browser
+consent. Never print credentials or tokens. Let me choose the Search
+Console property, then verify the connection with a metrics request.
+Tell me exactly which steps succeeded and what still needs my input.
+```
+
+## Installation commands
 
 Node.js **22 or later** is required for every distribution.
 
@@ -24,6 +42,14 @@ pipx install searchdock-cli
 ```
 
 The Python package is a launcher containing the exact same JavaScript runtime. It has no separate Google implementation. If you install both packages, use `python -m searchdock_cli` to select the Python launcher explicitly.
+
+Install both skills for Codex in the current project:
+
+```sh
+npx --yes skills add xplormityai/searchdock-cli --skill searchdock-setup searchdock --agent codex --copy --yes
+```
+
+Replace `codex` with `claude-code`, `cursor`, `opencode`, or your [supported agent](https://github.com/vercel-labs/skills#supported-agents). Add `--global` only for installation across projects. Skills do not install the CLI or authorize Google access. [Plugin, MCP and manual setup](docs/agents.md).
 
 To run from source:
 
@@ -111,16 +137,17 @@ codex plugin add searchdock@searchdock
 In Claude Code:
 
 ```text
-/plugin marketplace add xplormityai/searchdock-cli
-/plugin install searchdock@searchdock
+/plugin install searchdock --marketplace xplormityai/searchdock-cli --scope project
 ```
 
-For a standalone skill, copy [`skills/searchdock`](skills/searchdock) into your agent's skills directory. Codex uses `~/.agents/skills/`; Claude Code uses `~/.claude/skills/`. Install the CLI separately. The setup skill is included in the plugin. The repository includes portable Agent Plugins, Codex and Claude manifests; local stdio plugins are not automatically listed in hosted plugin directories.
+This one-step command requires Claude Code 2.1.275+. Earlier versions can use `/plugin marketplace add xplormityai/searchdock-cli`, then `/plugin install searchdock@searchdock --scope project`.
+
+For standalone skills, copy both [`skills/searchdock`](skills/searchdock) and [`skills/searchdock-setup`](skills/searchdock-setup) into your agent's skills directory. Codex uses `~/.agents/skills/`; Claude Code uses `~/.claude/skills/`. Install the CLI separately. Both skills are included in the plugin. The repository includes portable Agent Plugins, Codex and Claude manifests; local stdio plugins are not automatically listed in hosted plugin directories.
 
 You can also install the skill with the [open skills installer](https://github.com/vercel-labs/skills):
 
 ```sh
-npx skills add xplormityai/searchdock-cli --skill searchdock
+npx --yes skills add xplormityai/searchdock-cli --skill searchdock-setup searchdock --agent codex --copy --yes
 ```
 
 [`server.json`](server.json) prepares a listing in the MCP Registry under `io.github.xplormityai/searchdock-cli`. Registry publication requires the npm package to be live and namespace authentication; the metadata file alone does not create a listing.
