@@ -100,3 +100,9 @@ jobs:
           else
             gh release create "$GITHUB_REF_NAME" packages/* --repo "$GITHUB_REPOSITORY" --title "SearchDock CLI $GITHUB_REF_NAME" --generate-notes
           fi
+  mcp-registry:
+    needs: [npm, pypi]
+    permissions:
+      contents: read
+      id-token: write
+    uses: ./.github/workflows/publish-mcp.yml
