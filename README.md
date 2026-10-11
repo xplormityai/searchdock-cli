@@ -152,6 +152,10 @@ npx --yes skills add xplormityai/searchdock-cli --skill searchdock-setup searchd
 
 SearchDock is published in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.xplormityai/searchdock-cli) under `io.github.xplormityai/searchdock-cli`. Release workflows update its metadata using GitHub OIDC.
 
+Both [SearchDock](https://clawhub.ai/xplormityai/skills/searchdock) and [setup](https://clawhub.ai/xplormityai/skills/searchdock-setup) skills are published on ClawHub. Its skill copies use MIT-0, as required by that registry; this repository and its packages remain MIT licensed.
+
+The local MCPB bundle is published on [Smithery](https://smithery.ai/servers/xplormityai/searchdock-cli). It requires Node.js 22+ and a locally authenticated Google profile; it includes no credentials. `python scripts/build_mcpb.py` packages a built `dist/cli.cjs`. [Release and discovery automation](docs/releasing.md).
+
 ## What the Google API can and cannot tell you
 
 | Available | Requires Search Console UI or an export |

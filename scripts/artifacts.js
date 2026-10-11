@@ -10,6 +10,7 @@ const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 execFileSync(npm, ['pack', '--pack-destination', 'dist/releases'], { stdio: 'inherit', shell: process.platform === 'win32' });
 execFileSync(process.env.PYTHON || 'python', ['-m', 'build', 'python', '--outdir', 'dist/releases'], { stdio: 'inherit' });
 execFileSync(process.env.PYTHON || 'python', ['scripts/bundles.py', pkg.version], { stdio: 'inherit' });
+execFileSync(process.env.PYTHON || 'python', ['scripts/build_mcpb.py'], { stdio: 'inherit' });
 await copyFile('server.json', 'dist/releases/server.json');
 const { readdir } = await import('node:fs/promises');
 const hashes = [];

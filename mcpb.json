@@ -1,0 +1,22 @@
+{
+  "manifest_version": "0.3",
+  "name": "searchdock-cli",
+  "display_name": "SearchDock CLI",
+  "version": "0.1.3",
+  "description": "Read-only Google Search Console analytics, URL inspection and sitemap monitoring.",
+  "long_description": "Requires Node.js 22+. Before connecting, authenticate locally with SearchDock CLI using your own Google OAuth Desktop client and read-only Search Console consent. This bundle contains no account credentials. It reads the existing local SearchDock profile and never requests indexing or changes your site. Bing support is planned.",
+  "author": { "name": "Xplormity Collective" },
+  "repository": { "type": "git", "url": "https://github.com/xplormityai/searchdock-cli.git" },
+  "homepage": "https://github.com/xplormityai/searchdock-cli",
+  "documentation": "https://github.com/xplormityai/searchdock-cli/blob/main/docs/google-setup.md",
+  "support": "https://github.com/xplormityai/searchdock-cli/issues",
+  "server": {
+    "type": "node",
+    "entry_point": "server/cli.cjs",
+    "mcp_config": { "command": "node", "args": ["${__dirname}/server/cli.cjs", "mcp"] }
+  },
+  "compatibility": { "platforms": ["darwin", "win32", "linux"], "runtimes": { "node": ">=22" } },
+  "privacy_policies": ["https://policies.google.com/privacy"],
+  "keywords": ["google-search-console", "seo", "search-analytics", "mcp", "cli"],
+  "license": "MIT"
+}

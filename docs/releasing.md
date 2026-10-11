@@ -12,7 +12,7 @@ The repository is `xplormityai/searchdock-cli`. The npm and PyPI distribution na
 6. Once the npm package exists, enable account-level 2FA and configure its trusted publisher for the same repo and workflow, environment `npm`, allowing direct `npm publish`. Use the package settings page or `npm trust github searchdock-cli --file release.yml --repo xplormityai/searchdock-cli --environment npm --allow-publish --yes`. The workflow uses OIDC; persistent npm/PyPI upload tokens are not required.
 7. Push a matching `v0.1.3` tag when both registry publishers are configured. The workflow builds tested artifacts and publishes to npm and PyPI in separate jobs. A first npm version already uploaded manually is skipped if the registry returns that exact version.
 
-GitHub releases include an npm tarball, Python wheel/source distribution, plugin ZIP, skill ZIP and SHA256 checksums. Plugins and MCP clients resolve the pinned npm release, so publish npm before announcing plugin installation.
+GitHub releases include an npm tarball, Python wheel/source distribution, plugin ZIP, skill ZIP, local MCPB bundle and SHA256 checksums. Plugins and MCP clients resolve the pinned npm release, so publish npm before announcing plugin installation.
 
 The GitHub release is created only after both registry jobs succeed. Failed jobs can be rerun; uploading GitHub release files is idempotent. GitHub creates the `npm` and `pypi` environments when the workflow first references them if they do not already exist. The publisher environment names must match these job names exactly.
 
@@ -29,5 +29,7 @@ Suggested GitHub topics: `google-search-console`, `gsc`, `seo`, `cli`, `mcp`, `a
 The skill is discoverable directly from GitHub with `npx skills add xplormityai/searchdock-cli --list` and installable with `--skill searchdock`. A plugin ZIP can be shared with compatible clients. Hosted plugin stores have separate ownership and review requirements; these artifacts do not automatically publish listings there. No search ranking is guaranteed.
 
 ## MCP Registry
+
+The `publish-skills.yml` workflow previews changes to `skills/` on pushes to main. To publish changed skills from GitHub Actions, add the source owner's ClawHub token as the `CLAWHUB_TOKEN` Actions secret and set the repository variable `PUBLISH_CLAWHUB` to `true`. Releases then publish changed skills after npm and PyPI succeed. Manual runs default to preview; disable `dry_run` to publish. The workflow checks the authenticated owner before publishing. ClawHub requires MIT-0 for the published skill copies; source and package licensing remains MIT.
 
 After npm publication, use the official [MCP Registry publisher](https://modelcontextprotocol.io/registry/quickstart) with the included `server.json`. Its name matches the package's `mcpName`. Authenticate with an identity authorized for `io.github.xplormityai/`, then run `mcp-publisher publish` from this repository. If this is an organization namespace, use the supported [GitHub Actions OIDC flow](https://modelcontextprotocol.io/registry/github-actions) or another ownership verification method. Publishing the npm package does not automatically create the MCP Registry listing.
